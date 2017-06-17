@@ -33,23 +33,12 @@ class RespawnPacket extends DataPacket{
 	public $z;
 
 	public function decode(){
-		$this->x = $this->getLFloat();
-		$this->y = $this->getLFloat();
-		$this->z = $this->getLFloat();
+		$this->getVector3f($this->x, $this->y, $this->z);
 	}
 
 	public function encode(){
 		$this->reset();
-		$this->putLFloat($this->x);
-		$this->putLFloat($this->y);
-		$this->putLFloat($this->z);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "RespawnPacket";
+		$this->putVector3f($this->x, $this->y, $this->z);
 	}
 
 }

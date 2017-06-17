@@ -39,14 +39,9 @@ class DisconnectPacket extends DataPacket{
 	public function encode(){
 		$this->reset();
 		$this->putBool($this->hideDisconnectionScreen);
-		$this->putString($this->message);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "DisconnectPacket";
+		if($this->hideDisconnectionScreen){
+			$this->putString($this->message);
+		}
 	}
 
 }

@@ -37,11 +37,4 @@ class ChunkRadiusUpdatedPacket extends DataPacket{
 		$this->putVarInt($this->radius);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "ChunkRadiusUpdatedPacket";
-	}
-
 }

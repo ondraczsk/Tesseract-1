@@ -43,11 +43,4 @@ class ContainerSetDataPacket extends DataPacket{
 		$this->putVarInt($this->value);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "ContainerSetDataPacket";
-	}
-
 }

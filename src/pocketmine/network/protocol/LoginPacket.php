@@ -38,7 +38,7 @@ class LoginPacket extends DataPacket{
 	public $gameEdition;
 	public $clientUUID;
 	public $clientId;
-    public $adRole;
+     public $adRole;
 	public $currentInputMode;
 	public $defaultInputMode;
 	public $deviceModel;
@@ -176,13 +176,6 @@ class LoginPacket extends DataPacket{
 		}
 
 		return array($verified, json_decode(base64_decode($payloadB64), true));
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "LoginPacket";
 	}
 
 }

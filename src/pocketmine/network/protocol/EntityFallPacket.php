@@ -28,21 +28,18 @@ class EntityFallPacket extends DataPacket{
 
 	const NETWORK_ID = Info::ENTITY_FALL_PACKET;
 
+	public $eid;
 	public $fallDistance;
+	public $unknownbool;
 
 	public function decode(){
+		$this->eid = $this->getEntityId();
 		$this->fallDistance = $this->getLFloat();
+		$this->unknownbool = $this->getBool();
 	}
 
 	public function encode(){
 
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "PlayerFallPacket";
 	}
 
 }

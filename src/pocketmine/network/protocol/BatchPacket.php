@@ -39,11 +39,4 @@ class BatchPacket extends DataPacket{
 		$this->put($this->payload);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "BatchPacket";
-	}
-
 }

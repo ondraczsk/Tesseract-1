@@ -35,9 +35,9 @@ class MobEffectPacket extends DataPacket{
 	public $eid;
 	public $eventId;
 	public $effectId;
-	public $amplifier;
+	public $amplifier = 0;
 	public $particles = true;
-	public $duration;
+	public $duration = 0;
 
 	public function decode(){
 
@@ -51,13 +51,6 @@ class MobEffectPacket extends DataPacket{
 		$this->putVarInt($this->amplifier);
 		$this->putBool($this->particles);
 		$this->putVarInt($this->duration);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "MobEffectPacket";
 	}
 
 }

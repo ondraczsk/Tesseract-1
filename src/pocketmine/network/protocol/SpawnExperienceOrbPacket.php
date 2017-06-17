@@ -23,11 +23,4 @@ class SpawnExperienceOrbPacket extends DataPacket{
 		$this->putVarInt($this->amount);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "SpawnExperienceOrbPacket";
-	}
-
 }

@@ -48,11 +48,4 @@ class InteractPacket extends DataPacket{
 		$this->putEntityId($this->target);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "InteractPacket";
-	}
-
 }

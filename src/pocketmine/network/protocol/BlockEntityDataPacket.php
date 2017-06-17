@@ -44,11 +44,4 @@ class BlockEntityDataPacket extends DataPacket{
 		$this->put($this->namedtag);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "BlockEntityDataPacket";
-	}
-
 }

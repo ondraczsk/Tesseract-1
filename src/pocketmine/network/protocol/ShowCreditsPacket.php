@@ -27,8 +27,11 @@ class ShowCreditsPacket extends DataPacket{
 
 	const NETWORK_ID = Info::SHOW_CREDITS_PACKET;
 
-	public $eid;
-	public $type;
+	const STATUS_START_CREDITS = 0;
+	const STATUS_END_CREDITS = 1;
+
+	public $playerEid;
+	public $status;
 
 	public function decode(){
 
@@ -36,15 +39,8 @@ class ShowCreditsPacket extends DataPacket{
 
 	public function encode(){
 		$this->reset();
-		$this->putEntityId($this->eid);
-		$this->putVarInt($this->type);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "ShowCreditsPacket";
+		$this->putEntityId($this->playerEid);
+		$this->putVarInt($this->status);
 	}
 
 }

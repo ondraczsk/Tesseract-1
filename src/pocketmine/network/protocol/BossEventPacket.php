@@ -42,11 +42,4 @@ class BossEventPacket extends DataPacket{
 		$this->putUnsignedVarInt($this->type);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "BossEventPacket";
-	}
-
 }

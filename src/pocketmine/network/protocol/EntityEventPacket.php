@@ -42,32 +42,26 @@ class EntityEventPacket extends DataPacket{
 	const FISH_HOOK_TEASE = 14;
 	const SQUID_INK_CLOUD = 15;
 	const AMBIENT_SOUND = 16;
-	const RESPAWN = 17;
+
+	const RESPAWN = 18;
 
 	//TODO add new events
 
 	public $eid;
 	public $event;
-	public $unknown;
+	public $data = 0;
 
 	public function decode(){
 		$this->eid = $this->getEntityId();
 		$this->event = $this->getByte();
-		$this->unknown = $this->getVarInt();
+		$this->data = $this->getVarInt();
 	}
 
 	public function encode(){
 		$this->reset();
 		$this->putEntityId($this->eid);
 		$this->putByte($this->event);
-		$this->putVarInt($this->unknown);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "EntityEventPacket";
+		$this->putVarInt($this->data);
 	}
 
 }

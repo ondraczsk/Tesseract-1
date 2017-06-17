@@ -24,16 +24,18 @@ namespace pocketmine\network\protocol;
 #include <rules/DataPacket.h>
 
 
-class ContainerSetContentPacket extends DataPacket{
+class ContainerSetContentPacket extends DataPacket {
 
 	const NETWORK_ID = Info::CONTAINER_SET_CONTENT_PACKET;
 
 	const SPECIAL_INVENTORY = 0;
+	const SPECIAL_OFFHAND = 0x77;
 	const SPECIAL_ARMOR = 0x78;
 	const SPECIAL_CREATIVE = 0x79;
 	const SPECIAL_HOTBAR = 0x7a;
 
 	public $windowid;
+	public $targetEid;
 	public $slots = [];
 	public $hotbar = [];
 
@@ -44,16 +46,15 @@ class ContainerSetContentPacket extends DataPacket{
 	}
 
 	public function decode(){
-		$this->windowid = $this->getByte();
+		$this->windowid = $this->getEntityId();
+		$this->targetEid = $this->getEntityId();
 		$count = $this->getUnsignedVarInt();
 		for($s = 0; $s < $count and !$this->feof(); ++$s){
 			$this->slots[$s] = $this->getSlot();
 		}
-		if($this->windowid === self::SPECIAL_INVENTORY){
-			$count = $this->getUnsignedVarInt();
-			for($s = 0; $s < $count and !$this->feof(); ++$s){
-				$this->hotbar[$s] = $this->getVarInt();
-			}
+		$count = $this->getUnsignedVarInt();
+		for($s = 0; $s < $count and !$this->feof(); ++$s){
+			$this->hotbar[$s] = $this->getVarInt();
 		}
 	}
 
@@ -72,13 +73,6 @@ class ContainerSetContentPacket extends DataPacket{
 		}else{
 			$this->putUnsignedVarInt(0);
 		}
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "ContainerSetContentPacket";
 	}
 
 }

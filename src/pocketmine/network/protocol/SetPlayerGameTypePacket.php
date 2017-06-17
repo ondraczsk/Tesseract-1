@@ -39,11 +39,4 @@ class SetPlayerGameTypePacket extends DataPacket{
 		$this->putVarInt($this->gamemode);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "SetPlayerGameTypePacket";
-	}
-
 }

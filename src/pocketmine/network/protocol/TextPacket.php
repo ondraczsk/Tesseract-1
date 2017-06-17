@@ -35,6 +35,7 @@ class TextPacket extends DataPacket{
 	const TYPE_TIP = 4;
 	const TYPE_SYSTEM = 5;
 	const TYPE_WHISPER = 6;
+	const TYPE_ANNOUNCEMENT = 7;
 
 	public $type;
 	public $source;
@@ -46,8 +47,9 @@ class TextPacket extends DataPacket{
 		switch($this->type){
 			case self::TYPE_POPUP:
 			case self::TYPE_CHAT:
-			/** @noinspection PhpMissingBreakStatementInspection */
 			case self::TYPE_WHISPER:
+			/** @noinspection PhpMissingBreakStatementInspection */
+			case self::TYPE_ANNOUNCEMENT:
 				$this->source = $this->getString();
 			case self::TYPE_RAW:
 			case self::TYPE_TIP:
@@ -70,8 +72,9 @@ class TextPacket extends DataPacket{
 		switch($this->type){
 			case self::TYPE_POPUP:
 			case self::TYPE_CHAT:
-			/** @noinspection PhpMissingBreakStatementInspection */
 			case self::TYPE_WHISPER:
+			/** @noinspection PhpMissingBreakStatementInspection */
+			case self::TYPE_ANNOUNCEMENT:
 				$this->putString($this->source);
 			case self::TYPE_RAW:
 			case self::TYPE_TIP:

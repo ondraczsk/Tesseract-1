@@ -55,11 +55,4 @@ class UpdateBlockPacket extends DataPacket{
 		$this->putUnsignedVarInt(($this->flags << 4) | $this->blockData);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "UpdateBlockPacket";
-	}
-
 }

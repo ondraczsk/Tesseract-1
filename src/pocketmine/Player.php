@@ -1935,7 +1935,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 		$pk->hasBeenLoadedInCreative = 1;
 		$pk->dayCycleStopTime = -1; //TODO: implement this properly
 		$pk->eduMode = 0;
-		$pk->rainLevel = 0; //TODO: implement these properly
+		$pk->rainLevel = 0; //TODO: implement weather properly
 		$pk->lightningLevel = 0;
 		$pk->commandsEnabled = 1;
 		$pk->unknown = "UNKNOWN";
@@ -1962,9 +1962,7 @@ class Player extends Human implements CommandSender, InventoryHolder, ChunkLoade
 			round($this->y, 4),
 			round($this->z, 4)
 		]));
-		/*if($this->isOp()){
-			$this->setRemoveFormat(false);
-		}*/
+
 		if($this->gamemode === Player::SPECTATOR){
 			$pk = new ContainerSetContentPacket();
 			$pk->windowid = ContainerSetContentPacket::SPECIAL_CREATIVE;

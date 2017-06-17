@@ -38,11 +38,4 @@ class SetEntityDataPacket extends DataPacket{
 		$this->putEntityMetadata($this->metadata);
 	}
 
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "SetEntityDataPacket";
-	}
-
 }

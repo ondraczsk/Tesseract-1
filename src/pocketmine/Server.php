@@ -263,6 +263,7 @@ class Server{
 
 	private $aboutContent = "";
 
+	//TODO: Remove advanced config
 	/** Advanced Config */
 	public $advancedConfig = null;
 

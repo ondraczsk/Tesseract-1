@@ -31,22 +31,15 @@ class BlockPickRequestPacket extends DataPacket{
 	public $x;
 	public $y;
 	public $z;
-	public $unknown;
+	public $slot;
 
 	public function decode(){
 		$this->getBlockCoords($this->x, $this->y, $this->z);
-		$this->unknown = $this->getByte();
+		$this->slot = $this->getByte();
 	}
 
 	public function encode(){
 
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "BlockPickRequestPacket";
 	}
 
 }

@@ -30,32 +30,25 @@ class MobEquipmentPacket extends DataPacket{
 
 	public $eid;
 	public $item;
-	public $slot;
-	public $selectedSlot;
-	public $unknownByte;
+	public $inventorySlot;
+	public $hotbarSlot;
+	public $windowId = 0;
 
 	public function decode(){
 		$this->eid = $this->getEntityId(); //EntityRuntimeID
 		$this->item = $this->getSlot();
-		$this->slot = $this->getByte();
-		$this->selectedSlot = $this->getByte();
-		$this->unknownByte = $this->getByte();
+		$this->inventorySlot = $this->getByte();
+		$this->hotbarSlot = $this->getByte();
+		$this->windowId = $this->getByte();
 	}
 
 	public function encode(){
 		$this->reset();
 		$this->putEntityId($this->eid); //EntityRuntimeID
 		$this->putSlot($this->item);
-		$this->putByte($this->slot);
-		$this->putByte($this->selectedSlot);
-		$this->putByte($this->unknownByte);
-	}
-
-	/**
-	 * @return PacketName|string
-     */
-	public function getName(){
-		return "MobEquipmentPacket";
+		$this->putByte($this->inventorySlot);
+		$this->putByte($this->hotbarSlot);
+		$this->putByte($this->windowId);
 	}
 
 }
