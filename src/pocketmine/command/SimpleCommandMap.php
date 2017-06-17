@@ -70,7 +70,10 @@ use pocketmine\command\defaults\VersionCommand;
 use pocketmine\command\defaults\WeatherCommand;
 use pocketmine\command\defaults\WhitelistCommand;
 use pocketmine\command\defaults\XpCommand;
-use pocketmine\command\defaults\MakePharCommand;
+
+use pocketmine\command\defaults\MakePluginCommand;
+use pocketmine\command\defaults\MakeServerCommand;
+use pocketmine\command\defaults\ExtractPluginCommand;
 
 use pocketmine\event\TranslationContainer;
 use pocketmine\Player;
@@ -147,6 +150,9 @@ class SimpleCommandMap implements CommandMap{
 		$this->register("pocketmine", new ReloadCommand("reload"), null, true);
 		$this->register("pocketmine", new XpCommand("xp"));
 		$this->register("pocketmine", new SetBlockCommand("setblock"));
+		$this->register("pocketmine", new MakePluginCommand("mp"));
+		$this->register("pocketmine", new MakeServerCommand("ms"));
+		$this->register("pocketmine", new ExtractPluginCommand("ep"));
 
 		if($this->server->getProperty("debug.commands", false)){
 			$this->register("pocketmine", new StatusCommand("status"), null, true);
