@@ -6,9 +6,8 @@ timings/*
 *.log
 *.phar
 server.properties
-/pocketmine.yml
 *.txt
-genisys.yml
+*.yml
 crashdumps/*
 
 # Common IDEs
