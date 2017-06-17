@@ -1538,6 +1538,10 @@ class Server{
 				mkdir($dataPath . "crashdumps/", 0777);
 			}
 			
+			if(!file_exists($dataPath . "plugins/Tesseract/")){
+				mkdir($dataPath . "plugins/Tesseract/", 0777);
+			}
+			
 			if(\Phar::running(true) === ""){
 			   $packages = "src";
 			} else {
