@@ -23,12 +23,12 @@ namespace pocketmine\block;
 
 use pocketmine\item\Item;
 
-class Bedrock extends Solid{
+class Bedrock extends Solid {
 
 	protected $id = self::BEDROCK;
 
-	public function __construct(){
-
+	public function __construct($meta = 0){
+		$this->meta = $meta;
 	}
 
 	public function getName() : string{
@@ -46,5 +46,4 @@ class Bedrock extends Solid{
 	public function isBreakable(Item $item){
 		return false;
 	}
-
 }
