@@ -759,7 +759,6 @@ class Level implements ChunkManager, Metadatable{
 	public function sendTime(){
 		$pk = new SetTimePacket();
 		$pk->time = (int) $this->time;
-		$pk->started = $this->stopTime == false;
 
 		$this->server->broadcastPacket($this->players, $pk);
 	}
