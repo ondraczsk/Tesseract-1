@@ -1,7 +1,9 @@
 Tesseract
 ===============
 
-__Feature-rich server software for Minecraft: Pocket Edition__
+__Feature-rich server software for Minecraft: Pocket Edition
+Current version: 1.1.x
+Stability: In-Dev - Beta __
 
 [![Travis-CI](https://img.shields.io/travis/TesseractTeam/Tesseract.svg)](https://travis-ci.org/TesseractTeam/Tesseract)
 
