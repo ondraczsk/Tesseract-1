@@ -1,18 +1,30 @@
+
 #!/bin/bash
-echo Running lint...
-shopt -s globstar
-for file in **/*.php; do
-    OUTPUT=`php -l "$file"`
-    [ $? -ne 0 ] && echo -n "$OUTPUT" && exit 1
+
+PHP_BINARY="php"
+
+while getopts "p:" OPTION 2> /dev/null; do
+	case ${OPTION} in
+		p)
+			PHP_BINARY="$OPTARG"
+			;;
+	esac
 done
-echo Lint done successfully.
-mkdir plugins
-cd plugins
-wget https://github.com/TesseractTeam/DevTools/releases/download/2.0.0/PocketMine-DevTools_v1.11.1.phar
-cd -
-echo -e "version\nmakeserver\nstop\n" | php src/pocketmine/PocketMine.php --no-wizard | grep -v "\[Tesseract] Adding "
-if ls plugins/Tesseract/Tesseract*.phar >/dev/null 2>&1; then
-    echo Server packaged successfully.
+
+./tests/lint.sh -p "$PHP_BINARY"
+
+if [ $? -ne 0 ]; then
+	echo Lint scan failed!
+	exit 1
+fi
+
+cp -r tests/plugins plugins
+"$PHP_BINARY" -dphar.readonly=0 ./plugins/PocketMine-DevTools/src/DevTools/ConsoleScript.php --make ./plugins/PocketMine-DevTools --relative ./plugins/PocketMine-DevTools --out ./plugins/DevTools.phar
+rm -rf ./plugins/PocketMine-DevTools
+
+echo -e "version\nmakeserver\nstop\n" | "$PHP_BINARY" -dphar.readonly=0 src/pocketmine/PocketMine.php --no-wizard --disable-ansi --disable-readline --debug.level=2
+if ls plugins/DevTools/Tesseract*.phar >/dev/null 2>&1; then
+    echo Server phar created successfully.
 else
     echo No phar created!
     exit 1
